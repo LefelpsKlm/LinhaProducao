@@ -28,7 +28,7 @@ namespace LinhaProducao
                 OpenConnection();
 
 
-                string query = "SELECT * FROM clientes";
+                string query = "SELECT * FROM produtos";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
@@ -63,7 +63,7 @@ namespace LinhaProducao
             try
             {
 
-                string query = "INSERT INTO `clientes` (`nome`, `id_empresa`) VALUES (@nome, @id_empresa);";
+                string query = "INSERT INTO `produtos` (`nome`, `id_empresa`) VALUES (@nome, @id_empresa);";
 
                 MySqlParameter[] param = new MySqlParameter[]
                 {
