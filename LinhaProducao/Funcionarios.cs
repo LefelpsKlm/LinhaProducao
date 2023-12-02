@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LinhaProducao
 {
@@ -22,11 +23,14 @@ namespace LinhaProducao
 
         private int nivel;
 
+        public bool logado = false;
+
         public DateTime data_cadastro;
 
         public void SetSenha(string senha)
         {
-            this.senha = BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt());
+            //this.senha = BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt());
+            this.senha = senha;
         }
 
         public string GetSenha()
@@ -44,17 +48,16 @@ namespace LinhaProducao
             return this.nivel;
         }
 
-        public List<Funcionarios> GetListaFuncionarios()
+        public Funcionarios GetFuncionarioPorEmailESenha()
         {
-
-            List<Funcionarios> listaFuncionarios = new List<Funcionarios>();
+            Funcionarios funcionarios = new Funcionarios();
 
             try
             {
                 OpenConnection();
 
 
-                string query = "SELECT * FROM funcionarios";
+                string query = "SELECT * FROM funcionario WHERE email = '"+ this.email +"' AND senha = '"+ this.senha +"';";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
@@ -62,15 +65,14 @@ namespace LinhaProducao
                     {
                         while (reader.Read())
                         {
-                            Funcionarios funcionarios  = new Funcionarios();
-                            funcionarios.id            = Convert.ToInt32(reader.GetString("id"));
-                            funcionarios.id_empresa    = Convert.ToInt32(reader.GetString("id_empresa"));
-                            funcionarios.nome          = reader.GetString("nome");
-                            funcionarios.email         = reader.GetString("email");
-                            funcionarios.SetSenha(reader.GetString("senha"));
-                            funcionarios.SetNivel      (Convert.ToInt32(reader.GetString("nivel")));
-                            funcionarios.data_cadastro = DateTime.Parse(reader.GetString("data_cadastro"));
-                            listaFuncionarios.Add(funcionarios);
+
+                            this.id = Convert.ToInt32(reader.GetString("id"));
+                            this.nome = reader.GetString("nome");
+                            this.email = reader.GetString("email");
+                            this.SetNivel(Convert.ToInt32(reader.GetString("nivel")));
+
+                            this.logado = true;
+
                         }
                     }
                 }
@@ -83,8 +85,50 @@ namespace LinhaProducao
                 throw new Exception("Erro: " + ex.Message);
             }
 
-            return listaFuncionarios;
+            return this;
         }
+
+        //public List<Funcionarios> GetListaFuncionarios()
+        //{
+
+        //    List<Funcionarios> listaFuncionarios = new List<Funcionarios>();
+
+        //    try
+        //    {
+        //        OpenConnection();
+
+
+        //        string query = "SELECT * FROM funcionarios";
+
+        //        using (MySqlCommand cmd = new MySqlCommand(query, connection))
+        //        {
+        //            using (MySqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    Funcionarios funcionarios  = new Funcionarios();
+        //                    funcionarios.id            = Convert.ToInt32(reader.GetString("id"));
+        //                    funcionarios.id_empresa    = Convert.ToInt32(reader.GetString("id_empresa"));
+        //                    funcionarios.nome          = reader.GetString("nome");
+        //                    funcionarios.email         = reader.GetString("email");
+        //                    funcionarios.SetSenha(reader.GetString("senha"));
+        //                    funcionarios.SetNivel      (Convert.ToInt32(reader.GetString("nivel")));
+        //                    funcionarios.data_cadastro = DateTime.Parse(reader.GetString("data_cadastro"));
+        //                    listaFuncionarios.Add(funcionarios);
+        //                }
+        //            }
+        //        }
+
+        //        CloseConnection();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Erro: " + ex.Message);
+        //    }
+
+        //    return listaFuncionarios;
+        //}
 
         public bool Insert()
         {
