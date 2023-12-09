@@ -38,7 +38,7 @@
             // 
             this.listViewClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(38)))), ((int)(((byte)(51)))));
             this.listViewClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewClientes.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewClientes.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewClientes.ForeColor = System.Drawing.Color.White;
             this.listViewClientes.HideSelection = false;
             this.listViewClientes.Location = new System.Drawing.Point(0, 77);
@@ -46,6 +46,7 @@
             this.listViewClientes.Size = new System.Drawing.Size(788, 361);
             this.listViewClientes.TabIndex = 0;
             this.listViewClientes.UseCompatibleStateImageBehavior = false;
+            this.listViewClientes.SelectedIndexChanged += new System.EventHandler(this.listViewClientes_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -82,6 +83,7 @@
             this.Controls.Add(this.listViewClientes);
             this.Name = "PaginaClientes";
             this.Text = "PaginaClientes";
+            this.Load += new System.EventHandler(this.PaginaClientes_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

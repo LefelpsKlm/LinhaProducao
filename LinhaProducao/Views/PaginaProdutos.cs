@@ -39,8 +39,8 @@ namespace LinhaProducao.Views
                 {
                     ListViewItem item = new ListViewItem("", 0);
                     item.Checked = true;
-                    item.SubItems.Add(produtos.id.ToString());
-                    item.SubItems.Add(produtos.nome);
+                    item.SubItems.Add(produto.id.ToString());
+                    item.SubItems.Add(produto.nome);
                     listViewProdutos.Items.Add(item);
                 }
 
@@ -56,6 +56,11 @@ namespace LinhaProducao.Views
 
 
         private void PaginaProdutos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

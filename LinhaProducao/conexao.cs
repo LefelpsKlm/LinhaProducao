@@ -13,7 +13,7 @@ namespace LinhaProducao
         private string ConexaoWebConfig = "MySql";
 
         private string Server = "localhost";
-        private string Database = "linha_producao";
+        private string Database = "linhaproducao";
         private string Usuario = "root";
         private string Senha = "";
 

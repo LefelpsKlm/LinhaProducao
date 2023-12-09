@@ -38,12 +38,12 @@ namespace LinhaProducao
                     {
                         while (reader.Read())
                         {
-                            Ordem_Producao OrdemP = new Ordem_Producao();
-                            OrdemP.id             = Convert.ToInt32(reader.GetString("id"));
-                            OrdemP.id_empresa     = Convert.ToInt32(reader.GetString("id_empresa"));
-                            OrdemP.setor          = Convert.ToInt32(reader.GetString("setor"));
-                            OrdemP.cliente        = Convert.ToInt32(reader.GetString("cliente"));
-                            listaOrdemProducao.Add(OrdemP);
+                            Ordem_Producao ordem_producao = new Ordem_Producao();
+                            ordem_producao.id             = Convert.ToInt32(reader.GetString("id"));
+                            ordem_producao.id_empresa     = Convert.ToInt32(reader.GetString("id_empresa"));
+                            ordem_producao.setor          = Convert.ToInt32(reader.GetString("id_setor"));
+                            ordem_producao.cliente        = Convert.ToInt32(reader.GetString("id_cliente"));
+                            listaOrdemProducao.Add(ordem_producao);
                         }
                     }
                 }

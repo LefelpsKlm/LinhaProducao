@@ -1,6 +1,6 @@
 ﻿namespace LinhaProducao.Views
 {
-    partial class PaginaProdutos
+    partial class PaginaLinhaProducao
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.listViewProdutos = new System.Windows.Forms.ListView();
+            this.listViewLProducao = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 52);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 6;
             // 
             // button1
             // 
@@ -56,34 +56,33 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 46);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Adicionar Novo Produto";
+            this.button1.Text = "Adicionar Nova Linha de Produção";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // listViewProdutos
+            // listViewLProducao
             // 
-            this.listViewProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(38)))), ((int)(((byte)(51)))));
-            this.listViewProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewProdutos.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewProdutos.ForeColor = System.Drawing.Color.White;
-            this.listViewProdutos.HideSelection = false;
-            this.listViewProdutos.Location = new System.Drawing.Point(0, 83);
-            this.listViewProdutos.Name = "listViewProdutos";
-            this.listViewProdutos.Size = new System.Drawing.Size(788, 361);
-            this.listViewProdutos.TabIndex = 3;
-            this.listViewProdutos.UseCompatibleStateImageBehavior = false;
-            this.listViewProdutos.SelectedIndexChanged += new System.EventHandler(this.listViewProdutos_SelectedIndexChanged);
+            this.listViewLProducao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(38)))), ((int)(((byte)(51)))));
+            this.listViewLProducao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewLProducao.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewLProducao.ForeColor = System.Drawing.Color.White;
+            this.listViewLProducao.HideSelection = false;
+            this.listViewLProducao.Location = new System.Drawing.Point(0, 86);
+            this.listViewLProducao.Name = "listViewLProducao";
+            this.listViewLProducao.Size = new System.Drawing.Size(788, 361);
+            this.listViewLProducao.TabIndex = 5;
+            this.listViewLProducao.UseCompatibleStateImageBehavior = false;
             // 
-            // PaginaProdutos
+            // PaginaLinhaProducao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(38)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listViewProdutos);
-            this.Name = "PaginaProdutos";
-            this.Text = "PaginaProdutos";
-            this.Load += new System.EventHandler(this.PaginaProdutos_Load);
+            this.Controls.Add(this.listViewLProducao);
+            this.Name = "PaginaLinhaProducao";
+            this.Text = "PaginaLinhaProducao";
+            this.Load += new System.EventHandler(this.PaginaLinhaProducao_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -93,6 +92,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listViewProdutos;
+        private System.Windows.Forms.ListView listViewLProducao;
     }
 }

@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace LinhaProducao.Views
 {
-    public partial class PaginaClientes : Form
+    public partial class PaginaEtapas : Form
     {
-        public PaginaClientes()
+        public PaginaEtapas()
         {
             InitializeComponent();
 
             try
             {
-                
-                Clientes clientes = new Clientes();
 
-                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size (700, 500));
+                Etapas etapas = new Etapas();
+
+                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
 
                 listViewClientes.View = View.Details;
                 listViewClientes.LabelEdit = true;
@@ -35,13 +35,12 @@ namespace LinhaProducao.Views
                 listViewClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
                 listViewClientes.Columns.Add("NOME", -2, HorizontalAlignment.Left);
 
-                foreach(Clientes cliente in clientes.GetListaClientes())
+                foreach (Etapas etapa in etapas.GetListaEtapas())
                 {
                     ListViewItem item = new ListViewItem("", 0);
                     item.Checked = true;
-                    item.SubItems.Add(cliente.id.ToString());
-                    item.SubItems.Add(cliente.nome);
-                    item.SubItems.Add(cliente.email);
+                    item.SubItems.Add(etapa.id.ToString());
+                    item.SubItems.Add(etapa.nome);
                     listViewClientes.Items.Add(item);
                 }
 
@@ -54,27 +53,7 @@ namespace LinhaProducao.Views
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listViewClientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PaginaClientes_Load(object sender, EventArgs e)
+        private void PaginaEtapas_Load(object sender, EventArgs e)
         {
 
         }

@@ -42,7 +42,7 @@ namespace LinhaProducao
                         {
                             Linha_Producao linhaP = new Linha_Producao();
                             linhaP.id             = Convert.ToInt32(reader.GetString("id"));
-                            linhaP.nome           = reader.GetString("id");
+                            linhaP.nome           = reader.GetString("nome");
                             linhaP.id_empresa     = Convert.ToInt32(reader.GetString("id_empresa"));
                             linhaP.id_setor       = Convert.ToInt32(reader.GetString("id_setor"));
                             linhaP.id_responsavel = Convert.ToInt32(reader.GetString("id_responsavel"));
