@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinhaProducao.Views.AdcNv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,7 +54,47 @@ namespace LinhaProducao.Views
             }
         }
 
+        public void AbrirNv<Forms>() where Forms : Form, new()
+        {
 
+            Form formulario;
+
+            listViewProdutos.Controls.Clear();
+
+            formulario = listViewProdutos.Controls.OfType<Form>().FirstOrDefault();
+
+
+            if (formulario == null)
+            {
+
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+
+                formulario.Dock = DockStyle.Fill;
+
+                listViewProdutos.Controls.Add(formulario);
+                listViewProdutos.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+
+            }
+            else
+            {
+
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+
+                    formulario.WindowState = FormWindowState.Normal;
+
+                    formulario.BringToFront();
+
+                }
+
+            }
+
+        }
 
         private void PaginaProdutos_Load(object sender, EventArgs e)
         {
@@ -63,6 +104,11 @@ namespace LinhaProducao.Views
         private void listViewProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirNv<NvProdutos>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinhaProducao.Views.AdcNv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,19 +23,19 @@ namespace LinhaProducao.Views
 
                 Processos processos = new Processos();
 
-                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
+                listViewProcessos.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
 
-                listViewClientes.View = View.Details;
-                listViewClientes.LabelEdit = true;
-                listViewClientes.AllowColumnReorder = true;
-                listViewClientes.FullRowSelect = true;
-                listViewClientes.GridLines = true;
-                listViewClientes.CheckBoxes = true;
-                listViewClientes.Sorting = SortOrder.Ascending;
+                listViewProcessos.View = View.Details;
+                listViewProcessos.LabelEdit = true;
+                listViewProcessos.AllowColumnReorder = true;
+                listViewProcessos.FullRowSelect = true;
+                listViewProcessos.GridLines = true;
+                listViewProcessos.CheckBoxes = true;
+                listViewProcessos.Sorting = SortOrder.Ascending;
 
-                listViewClientes.Columns.Add("#", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("NOME", -2, HorizontalAlignment.Left);
+                listViewProcessos.Columns.Add("#", -2, HorizontalAlignment.Left);
+                listViewProcessos.Columns.Add("ID", -2, HorizontalAlignment.Left);
+                listViewProcessos.Columns.Add("NOME", -2, HorizontalAlignment.Left);
 
                 foreach (Processos processo in processos.GetListaProcessos())
                 {
@@ -42,7 +43,7 @@ namespace LinhaProducao.Views
                     item.Checked = true;
                     item.SubItems.Add(processo.id.ToString());
                     item.SubItems.Add(processo.nome);
-                    listViewClientes.Items.Add(item);
+                    listViewProcessos.Items.Add(item);
                 }
 
             }
@@ -54,9 +55,56 @@ namespace LinhaProducao.Views
             }
         }
 
+        public void AbrirNv<Forms>() where Forms : Form, new()
+        {
+
+            Form formulario;
+
+            listViewProcessos.Controls.Clear();
+
+            formulario = listViewProcessos.Controls.OfType<Form>().FirstOrDefault();
+
+
+            if (formulario == null)
+            {
+
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+
+                formulario.Dock = DockStyle.Fill;
+
+                listViewProcessos.Controls.Add(formulario);
+                listViewProcessos.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+
+            }
+            else
+            {
+
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+
+                    formulario.WindowState = FormWindowState.Normal;
+
+                    formulario.BringToFront();
+
+                }
+
+            }
+
+        }
+
         private void PaginaProcessos_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirNv<NvProcesso>();
         }
     }
 }

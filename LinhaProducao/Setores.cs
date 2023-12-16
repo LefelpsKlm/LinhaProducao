@@ -65,7 +65,7 @@ namespace LinhaProducao
             try
             {
 
-                string query = "INSERT INTO `setor` (`nome`, `id_empresa`, `id_responsavel`) VALUES (@nome, @id_empresa, @id_responsavel);";
+                string query = "INSERT INTO `setores` (`nome`, `id_empresa`, `id_responsavel`) VALUES (@nome, @id_empresa, @id_responsavel);";
 
                 MySqlParameter[] param = new MySqlParameter[]
                 {

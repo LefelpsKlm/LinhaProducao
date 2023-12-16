@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinhaProducao.Views.AdcNv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,10 @@ namespace LinhaProducao.Views
 
             try
             {
-                
+
                 Clientes clientes = new Clientes();
 
-                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size (700, 500));
+                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
 
                 listViewClientes.View = View.Details;
                 listViewClientes.LabelEdit = true;
@@ -35,7 +36,7 @@ namespace LinhaProducao.Views
                 listViewClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
                 listViewClientes.Columns.Add("NOME", -2, HorizontalAlignment.Left);
 
-                foreach(Clientes cliente in clientes.GetListaClientes())
+                foreach (Clientes cliente in clientes.GetListaClientes())
                 {
                     ListViewItem item = new ListViewItem("", 0);
                     item.Checked = true;
@@ -54,17 +55,49 @@ namespace LinhaProducao.Views
             }
         }
 
+        public void AbrirNv<Forms>() where Forms : Form, new()
+        {
+
+            Form formulario;
+
+            listViewClientes.Controls.Clear();
+
+            formulario = listViewClientes.Controls.OfType<Form>().FirstOrDefault();
+
+
+            if (formulario == null)
+            {
+
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+
+                formulario.Dock = DockStyle.Fill;
+
+                listViewClientes.Controls.Add(formulario);
+                listViewClientes.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+
+            }
+            else
+            {
+
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+
+                    formulario.WindowState = FormWindowState.Normal;
+
+                    formulario.BringToFront();
+
+                }
+
+            }
+
+        }
+
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }
@@ -77,6 +110,11 @@ namespace LinhaProducao.Views
         private void PaginaClientes_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            AbrirNv<NvClientes>();
         }
     }
 }

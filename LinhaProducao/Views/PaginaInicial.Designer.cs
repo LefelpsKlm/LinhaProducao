@@ -39,6 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelConteudo = new System.Windows.Forms.Panel();
+            this.labelUsuario = new System.Windows.Forms.Label();
             this.panelCabecalho.SuspendLayout();
             this.panelBarraLateral.SuspendLayout();
             this.SuspendLayout();
@@ -46,11 +47,12 @@
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(45)))));
+            this.panelCabecalho.Controls.Add(this.labelUsuario);
             this.panelCabecalho.Controls.Add(this.label1);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(800, 30);
+            this.panelCabecalho.Size = new System.Drawing.Size(955, 30);
             this.panelCabecalho.TabIndex = 0;
             // 
             // label1
@@ -77,7 +79,7 @@
             this.panelBarraLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelBarraLateral.Location = new System.Drawing.Point(0, 30);
             this.panelBarraLateral.Name = "panelBarraLateral";
-            this.panelBarraLateral.Size = new System.Drawing.Size(200, 470);
+            this.panelBarraLateral.Size = new System.Drawing.Size(200, 527);
             this.panelBarraLateral.TabIndex = 1;
             // 
             // button7
@@ -204,16 +206,27 @@
             this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConteudo.Location = new System.Drawing.Point(200, 30);
             this.panelConteudo.Name = "panelConteudo";
-            this.panelConteudo.Size = new System.Drawing.Size(600, 470);
+            this.panelConteudo.Size = new System.Drawing.Size(755, 527);
             this.panelConteudo.TabIndex = 2;
             this.panelConteudo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConteudo_Paint);
+            // 
+            // labelUsuario
+            // 
+            this.labelUsuario.AutoSize = true;
+            this.labelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsuario.ForeColor = System.Drawing.Color.White;
+            this.labelUsuario.Location = new System.Drawing.Point(872, 7);
+            this.labelUsuario.Name = "labelUsuario";
+            this.labelUsuario.Size = new System.Drawing.Size(71, 20);
+            this.labelUsuario.TabIndex = 2;
+            this.labelUsuario.Text = "Usuário";
             // 
             // PaginaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(38)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ClientSize = new System.Drawing.Size(955, 557);
             this.Controls.Add(this.panelConteudo);
             this.Controls.Add(this.panelBarraLateral);
             this.Controls.Add(this.panelCabecalho);
@@ -243,5 +256,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelUsuario;
     }
 }

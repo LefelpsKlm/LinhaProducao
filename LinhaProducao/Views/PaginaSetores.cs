@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinhaProducao.Views.AdcNv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,19 +22,19 @@ namespace LinhaProducao.Views
 
                 Setores setores = new Setores();
 
-                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
+                listViewSetor.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
 
-                listViewClientes.View = View.Details;
-                listViewClientes.LabelEdit = true;
-                listViewClientes.AllowColumnReorder = true;
-                listViewClientes.FullRowSelect = true;
-                listViewClientes.GridLines = true;
-                listViewClientes.CheckBoxes = true;
-                listViewClientes.Sorting = SortOrder.Ascending;
+                listViewSetor.View = View.Details;
+                listViewSetor.LabelEdit = true;
+                listViewSetor.AllowColumnReorder = true;
+                listViewSetor.FullRowSelect = true;
+                listViewSetor.GridLines = true;
+                listViewSetor.CheckBoxes = true;
+                listViewSetor.Sorting = SortOrder.Ascending;
 
-                listViewClientes.Columns.Add("#", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("NOME", -2, HorizontalAlignment.Left);
+                listViewSetor.Columns.Add("#", -2, HorizontalAlignment.Left);
+                listViewSetor.Columns.Add("ID", -2, HorizontalAlignment.Left);
+                listViewSetor.Columns.Add("NOME", -2, HorizontalAlignment.Left);
 
                 foreach (Setores setor in setores.GetListaSetores())
                 {
@@ -41,7 +42,7 @@ namespace LinhaProducao.Views
                     item.Checked = true;
                     item.SubItems.Add(setor.id.ToString());
                     item.SubItems.Add(setor.nome);
-                    listViewClientes.Items.Add(item);
+                    listViewSetor.Items.Add(item);
                 }
 
             }
@@ -53,9 +54,56 @@ namespace LinhaProducao.Views
             }
         }
 
+        public void AbrirNv<Forms>() where Forms : Form, new()
+        {
+
+            Form formulario;
+
+            listViewSetor.Controls.Clear();
+
+            formulario = listViewSetor.Controls.OfType<Form>().FirstOrDefault();
+
+
+            if (formulario == null)
+            {
+
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+
+                formulario.Dock = DockStyle.Fill;
+
+                listViewSetor.Controls.Add(formulario);
+                listViewSetor.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+
+            }
+            else
+            {
+
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+
+                    formulario.WindowState = FormWindowState.Normal;
+
+                    formulario.BringToFront();
+
+                }
+
+            }
+
+        }
+
         private void PaginaSetores_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirNv<NvSetores>();
         }
     }
 }

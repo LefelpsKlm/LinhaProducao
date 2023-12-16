@@ -88,48 +88,6 @@ namespace LinhaProducao
             return this;
         }
 
-        //public List<Funcionarios> GetListaFuncionarios()
-        //{
-
-        //    List<Funcionarios> listaFuncionarios = new List<Funcionarios>();
-
-        //    try
-        //    {
-        //        OpenConnection();
-
-
-        //        string query = "SELECT * FROM funcionarios";
-
-        //        using (MySqlCommand cmd = new MySqlCommand(query, connection))
-        //        {
-        //            using (MySqlDataReader reader = cmd.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    Funcionarios funcionarios  = new Funcionarios();
-        //                    funcionarios.id            = Convert.ToInt32(reader.GetString("id"));
-        //                    funcionarios.id_empresa    = Convert.ToInt32(reader.GetString("id_empresa"));
-        //                    funcionarios.nome          = reader.GetString("nome");
-        //                    funcionarios.email         = reader.GetString("email");
-        //                    funcionarios.SetSenha(reader.GetString("senha"));
-        //                    funcionarios.SetNivel      (Convert.ToInt32(reader.GetString("nivel")));
-        //                    funcionarios.data_cadastro = DateTime.Parse(reader.GetString("data_cadastro"));
-        //                    listaFuncionarios.Add(funcionarios);
-        //                }
-        //            }
-        //        }
-
-        //        CloseConnection();
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Erro: " + ex.Message);
-        //    }
-
-        //    return listaFuncionarios;
-        //}
-
         public bool Insert()
         {
 

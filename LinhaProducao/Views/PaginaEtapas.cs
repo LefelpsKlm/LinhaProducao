@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinhaProducao.Views.AdcNv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,19 +22,19 @@ namespace LinhaProducao.Views
 
                 Etapas etapas = new Etapas();
 
-                listViewClientes.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
+                listViewEtapas.Bounds = new Rectangle(new Point(15, 70), new Size(700, 500));
 
-                listViewClientes.View = View.Details;
-                listViewClientes.LabelEdit = true;
-                listViewClientes.AllowColumnReorder = true;
-                listViewClientes.FullRowSelect = true;
-                listViewClientes.GridLines = true;
-                listViewClientes.CheckBoxes = true;
-                listViewClientes.Sorting = SortOrder.Ascending;
+                listViewEtapas.View = View.Details;
+                listViewEtapas.LabelEdit = true;
+                listViewEtapas.AllowColumnReorder = true;
+                listViewEtapas.FullRowSelect = true;
+                listViewEtapas.GridLines = true;
+                listViewEtapas.CheckBoxes = true;
+                listViewEtapas.Sorting = SortOrder.Ascending;
 
-                listViewClientes.Columns.Add("#", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-                listViewClientes.Columns.Add("NOME", -2, HorizontalAlignment.Left);
+                listViewEtapas.Columns.Add("#", -2, HorizontalAlignment.Left);
+                listViewEtapas.Columns.Add("ID", -2, HorizontalAlignment.Left);
+                listViewEtapas.Columns.Add("NOME", -2, HorizontalAlignment.Left);
 
                 foreach (Etapas etapa in etapas.GetListaEtapas())
                 {
@@ -41,7 +42,7 @@ namespace LinhaProducao.Views
                     item.Checked = true;
                     item.SubItems.Add(etapa.id.ToString());
                     item.SubItems.Add(etapa.nome);
-                    listViewClientes.Items.Add(item);
+                    listViewEtapas.Items.Add(item);
                 }
 
             }
@@ -53,9 +54,56 @@ namespace LinhaProducao.Views
             }
         }
 
+        public void AbrirNv<Forms>() where Forms : Form, new()
+        {
+
+            Form formulario;
+
+            listViewEtapas.Controls.Clear();
+
+            formulario = listViewEtapas.Controls.OfType<Form>().FirstOrDefault();
+
+
+            if (formulario == null)
+            {
+
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+
+                formulario.Dock = DockStyle.Fill;
+
+                listViewEtapas.Controls.Add(formulario);
+                listViewEtapas.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+
+            }
+            else
+            {
+
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+
+                    formulario.WindowState = FormWindowState.Normal;
+
+                    formulario.BringToFront();
+
+                }
+
+            }
+
+        }
+
         private void PaginaEtapas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirNv<NvEtapa>();
         }
     }
 }

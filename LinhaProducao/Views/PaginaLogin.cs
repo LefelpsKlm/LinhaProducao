@@ -60,10 +60,10 @@ namespace LinhaProducao.Views
                 }
                 else
                 {
-                    throw new Exception("Erro ao realizar login, credenciais incorretas ou não encontradas");
+                    throw new Exception("Erro ao realizar login, credenciais incorretas ou não encontradas.");
                 }
 
-                MessageBox.Show("Seja bem vindo, " + funcionarios.nome);
+                MessageBox.Show("Seja bem vindo, " + funcionarios.nome + ".");
 
             }
             catch (Exception expection)

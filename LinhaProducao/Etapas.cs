@@ -66,7 +66,7 @@ namespace LinhaProducao
             try
             {
 
-                string query = "INSERT INTO `etapa` (`nome`, `ordem`, `id_processo`, `email`) VALUES (@nome, @ordem, @id_processo);";
+                string query = "INSERT INTO `etapa` (`nome`, `ordem`, `id_processo`) VALUES (@nome, @ordem, @id_processo);";
 
                 MySqlParameter[] param = new MySqlParameter[]
                 {
